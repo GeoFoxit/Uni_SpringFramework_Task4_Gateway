@@ -16,8 +16,29 @@ public class MainController {
     @Autowired
     RestClient restClient;
 
+    @PostMapping("")
+    public ResponseEntity<?> createMananger(@Valid @RequestBody Mananger mananger, @RequestParam("result") BindingResult result) {
+        return restClient.createMananger(mananger, result);
+    }
+
+    @PatchMapping("/{mananger_id}")
+    public ResponseEntity<?> patchManangerById(@PathVariable Integer mananger_id, @Valid @RequestBody Mananger mananger, @RequestParam("result") BindingResult result) {
+        return restClient.patchManangerById(mananger_id, mananger, result);
+    }
+
     @GetMapping("")
     public Iterable<?> getAllManangers() {
         return restClient.getAllManangers();
     }
+
+    @GetMapping("/{mananger_id}")
+    public ResponseEntity<?> getManangerById(@PathVariable Integer mananger_id) {
+        return restClient.getManangerById(mananger_id);
+    }
+
+    @DeleteMapping("/{mananger_id}")
+    public ResponseEntity<?> deleteMananger(@PathVariable Integer mananger_id) {
+        return restClient.deleteMananger(mananger_id);
+    }
+
 }
