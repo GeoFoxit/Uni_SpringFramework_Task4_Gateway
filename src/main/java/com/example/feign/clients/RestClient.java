@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@FeignClient("client")
+@FeignClient("eurekaclientmicroservice")
 public interface RestClient {
 
     @PostMapping("")
