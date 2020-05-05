@@ -18,7 +18,7 @@ public interface RestClient {
     public ResponseEntity<?> patchManangerById(@PathVariable Integer mananger_id, @Valid @RequestBody Mananger mananger, @RequestParam("result") BindingResult result);
 
     @GetMapping("")
-    public Iterable<?> getAllManangers();
+    public ResponseEntity<?> getAllManangers();
 
     @GetMapping("/{mananger_id}")
     public ResponseEntity<?> getManangerById(@PathVariable Integer mananger_id);

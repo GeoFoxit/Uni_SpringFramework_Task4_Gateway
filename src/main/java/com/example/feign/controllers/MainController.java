@@ -27,7 +27,7 @@ public class MainController {
     }
 
     @GetMapping("")
-    public Iterable<?> getAllManangers() {
+    public ResponseEntity<?> getAllManangers() {
         return restClient.getAllManangers();
     }
 
