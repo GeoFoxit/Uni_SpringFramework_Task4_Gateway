@@ -18,12 +18,20 @@ public class MainController {
 
     @PostMapping("")
     public ResponseEntity<?> createMananger(@Valid @RequestBody Mananger mananger, @RequestParam("result") BindingResult result) {
-        return restClient.createMananger(mananger, result);
+        try {
+            return restClient.createMananger(mananger, result);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PatchMapping("/{mananger_id}")
     public ResponseEntity<?> patchManangerById(@PathVariable Integer mananger_id, @Valid @RequestBody Mananger mananger, @RequestParam("result") BindingResult result) {
-        return restClient.patchManangerById(mananger_id, mananger, result);
+        try {
+            return restClient.patchManangerById(mananger_id, mananger, result);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("")
@@ -33,12 +41,20 @@ public class MainController {
 
     @GetMapping("/{mananger_id}")
     public ResponseEntity<?> getManangerById(@PathVariable Integer mananger_id) {
-        return restClient.getManangerById(mananger_id);
+        try {
+            return restClient.getManangerById(mananger_id);
+        } catch (Exception e) {
+            return new ResponseEntity<String>("Entity is not found, check the ID",HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{mananger_id}")
     public ResponseEntity<?> deleteMananger(@PathVariable Integer mananger_id) {
-        return restClient.deleteMananger(mananger_id);
+        try {
+            return restClient.deleteMananger(mananger_id);
+        } catch (Exception e) {
+            return new ResponseEntity<String>("Entity is not found, check the ID",HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
