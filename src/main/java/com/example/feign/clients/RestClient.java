@@ -12,18 +12,18 @@ import javax.validation.Valid;
 public interface RestClient {
 
     @PostMapping("")
-    public ResponseEntity<?> createMananger(@Valid @RequestBody Mananger mananger, @RequestParam("result") BindingResult result);
+    public ResponseEntity<String> createMananger(@Valid @RequestBody Mananger mananger);
 
     @PatchMapping("/{mananger_id}")
-    public ResponseEntity<?> patchManangerById(@PathVariable Integer mananger_id, @Valid @RequestBody Mananger mananger, @RequestParam("result") BindingResult result);
+    public ResponseEntity<String> patchManangerById(@PathVariable Integer mananger_id, @Valid @RequestBody Mananger mananger);
 
     @GetMapping("")
-    public ResponseEntity<?> getAllManangers();
+    public ResponseEntity<String> getAllManangers();
 
     @GetMapping("/{mananger_id}")
-    public ResponseEntity<?> getManangerById(@PathVariable Integer mananger_id);
+    public ResponseEntity<String> getManangerById(@PathVariable Integer mananger_id);
 
     @DeleteMapping("/{mananger_id}")
-    public ResponseEntity<?> deleteMananger(@PathVariable Integer mananger_id);
+    public ResponseEntity<String> deleteMananger(@PathVariable Integer mananger_id);
 
 }
